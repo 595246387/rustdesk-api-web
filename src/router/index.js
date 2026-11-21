@@ -214,3 +214,22 @@ export const router = createRouter({
   routes: constantRoutes,
 })
 
+// 部署新版本后，已打开的旧页面在点击菜单/按钮时会去加载旧构建的 chunk，
+// 这些文件已被新版本替换，表现为“点了没反应”。这里捕获一次并自动刷新。
+const CHUNK_RELOAD_KEY = 'admin_chunk_reload_at'
+router.onError((error) => {
+  const message = String(error?.message || error || '')
+  const isChunkError = /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module|Loading chunk \d+ failed/i.test(message)
+  if (!isChunkError) {
+    return
+  }
+  const last = Number(sessionStorage.getItem(CHUNK_RELOAD_KEY) || 0)
+  // 10 秒内只自动刷新一次，避免资源真的缺失时无限刷新。
+  if (Date.now() - last < 10000) {
+    console.error('页面资源加载失败，请手动刷新页面：', message)
+    return
+  }
+  sessionStorage.setItem(CHUNK_RELOAD_KEY, String(Date.now()))
+  window.location.reload()
+})
+
