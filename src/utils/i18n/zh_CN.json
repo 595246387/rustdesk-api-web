@@ -547,5 +547,17 @@
   },
   "Remark": {
     "One": "备注"
+  },
+  "DeviceLimit": {
+    "One": "设备上限"
+  },
+  "DeviceLimitTip": {
+    "One": "0 跟随全局默认，-1 不限制，正数为最大设备数"
+  },
+  "FollowGlobal": {
+    "One": "默认"
+  },
+  "Unlimited": {
+    "One": "不限"
   }
 }

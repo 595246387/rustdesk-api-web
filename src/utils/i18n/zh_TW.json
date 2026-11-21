@@ -547,5 +547,17 @@
   },
   "Remark": {
     "One": "備註"
+  },
+  "DeviceLimit": {
+    "One": "裝置上限"
+  },
+  "DeviceLimitTip": {
+    "One": "0 跟隨全域預設，-1 不限制，正數為最大裝置數"
+  },
+  "FollowGlobal": {
+    "One": "預設"
+  },
+  "Unlimited": {
+    "One": "不限"
   }
 }

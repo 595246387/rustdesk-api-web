@@ -7,12 +7,16 @@ import { T } from '@/utils/i18n'
 
 export function useGetDetail (id) {
   let item = ref({})  //保留原始值
-  let form = ref({})
+  let form = ref({ device_limit: 0 })
   const groupsList = ref([])
   const getDetail = async (id) => {
     const res = await detail(id)
     item.value = { ...res.data }
     form.value = { ...res.data }
+    // 后端用 null 表示「跟随全局」，表单里统一显示成 0
+    if (form.value.device_limit === null || form.value.device_limit === undefined) {
+      form.value.device_limit = 0
+    }
   }
   if (id > 0) {
     onMounted(_ => {getDetail(id)})

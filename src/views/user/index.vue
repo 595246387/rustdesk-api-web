@@ -34,6 +34,13 @@
           </template>
         </el-table-column>
         <el-table-column prop="remark" :label="T('Remark')" align="center"/>
+        <el-table-column :label="T('DeviceLimit')" align="center" width="110">
+          <template #default="{row}">
+            <span v-if="row.device_limit === null || row.device_limit === undefined || row.device_limit === 0">{{ T('FollowGlobal') }}</span>
+            <span v-else-if="row.device_limit < 0">{{ T('Unlimited') }}</span>
+            <span v-else>{{ row.device_limit }}</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="created_at" :label="T('CreatedAt')" align="center"/>
         <el-table-column prop="updated_at" :label="T('UpdatedAt')" align="center"/>
         <el-table-column :label="T('Actions')" align="center" width="650">

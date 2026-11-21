@@ -517,5 +517,17 @@
   },
   "Remark": {
     "One": "비고"
+  },
+  "DeviceLimit": {
+    "One": "기기 제한"
+  },
+  "DeviceLimitTip": {
+    "One": "0 = 전역 기본값, -1 = 무제한, 양수 = 최대 기기 수"
+  },
+  "FollowGlobal": {
+    "One": "기본"
+  },
+  "Unlimited": {
+    "One": "무제한"
   }
 }

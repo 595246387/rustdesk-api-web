@@ -534,5 +534,17 @@
   },
   "Remark": {
     "One": "Remarque"
+  },
+  "DeviceLimit": {
+    "One": "Limite d'appareils"
+  },
+  "DeviceLimitTip": {
+    "One": "0 = suivre la valeur globale, -1 = illimité, positif = nombre max d'appareils"
+  },
+  "FollowGlobal": {
+    "One": "Par défaut"
+  },
+  "Unlimited": {
+    "One": "Illimité"
   }
 }

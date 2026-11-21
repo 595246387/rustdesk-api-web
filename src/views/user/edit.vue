@@ -35,6 +35,10 @@
       <el-form-item :label="T('Remark')" prop="remark">
           <el-input v-model="form.remark"></el-input>
       </el-form-item>
+      <el-form-item :label="T('DeviceLimit')" prop="device_limit">
+        <el-input-number v-model="form.device_limit" :min="-1" :step="1" step-strictly></el-input-number>
+        <div class="form-tip">{{ T('DeviceLimitTip') }}</div>
+      </el-form-item>
       <el-form-item>
         <el-button @click="cancel">{{ T('Cancel') }}</el-button>
         <el-button @click="submit" type="primary">{{ T('Submit') }}</el-button>
@@ -58,5 +62,11 @@
 
 <style lang="scss" scoped>
 .form-card {
+}
+.form-tip {
+  color: #909399;
+  font-size: 12px;
+  margin-left: 10px;
+  line-height: 1.4;
 }
 </style>
