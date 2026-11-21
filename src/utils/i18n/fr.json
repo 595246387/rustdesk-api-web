@@ -539,10 +539,10 @@
     "One": "Limite d'appareils"
   },
   "DeviceLimitTip": {
-    "One": "0 = suivre la valeur globale, -1 = illimité, positif = nombre max d'appareils"
+    "One": "0 = aucun appareil attribué (nouveaux appareils bloqués), -1 = illimité, positif = nombre max"
   },
   "FollowGlobal": {
-    "One": "Par défaut"
+    "One": "Suivre le global"
   },
   "Unlimited": {
     "One": "Illimité"

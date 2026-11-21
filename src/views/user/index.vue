@@ -41,7 +41,7 @@
         <el-table-column prop="remark" :label="T('Remark')" align="center"/>
         <el-table-column :label="T('DeviceLimit')" align="center" width="110">
           <template #default="{row}">
-            <span v-if="row.device_limit === null || row.device_limit === undefined || row.device_limit === 0">{{ T('FollowGlobal') }}</span>
+            <span v-if="row.device_limit === null || row.device_limit === undefined">{{ T('FollowGlobal') }}</span>
             <span v-else-if="row.device_limit < 0">{{ T('Unlimited') }}</span>
             <span v-else>{{ row.device_limit }}</span>
           </template>
