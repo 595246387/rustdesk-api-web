@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="login-card">
       <img src="@/assets/logo.png" alt="logo" class="login-logo"/>
-      <div class="register-tip">{{ T('RegisterNeedAdminConfirmTip') }}</div>
+      <div v-if="emailVerify" class="register-tip">{{ T('RegisterEmailVerifyTip') }}</div>
       <el-form ref="f" :model="form" label-position="top" class="login-form" :rules="rules">
         <el-form-item :label="T('Username')" prop="username">
           <el-input v-model="form.username" class="login-input"></el-input>

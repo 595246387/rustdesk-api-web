@@ -579,5 +579,8 @@
   },
   "EmailInvalid": {
     "One": "Invalid email address"
+  },
+  "RegisterEmailVerifyTip": {
+    "One": "Registration requires email verification. Once verified, you can sign in directly."
   }
 }

@@ -579,5 +579,8 @@
   },
   "EmailInvalid": {
     "One": "Dirección de correo inválida"
+  },
+  "RegisterEmailVerifyTip": {
+    "One": "El registro requiere verificación por correo. Una vez verificado, podrás iniciar sesión directamente."
   }
 }

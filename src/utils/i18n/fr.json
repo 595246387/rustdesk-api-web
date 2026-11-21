@@ -582,5 +582,8 @@
   },
   "EmailInvalid": {
     "One": "Adresse e-mail invalide"
+  },
+  "RegisterEmailVerifyTip": {
+    "One": "L'inscription nécessite une vérification par e-mail. Une fois vérifiée, vous pouvez vous connecter directement."
   }
 }

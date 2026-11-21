@@ -595,5 +595,8 @@
   },
   "EmailInvalid": {
     "One": "信箱格式不正確"
+  },
+  "RegisterEmailVerifyTip": {
+    "One": "註冊需要信箱驗證，驗證通過後即可直接登入。"
   }
 }
