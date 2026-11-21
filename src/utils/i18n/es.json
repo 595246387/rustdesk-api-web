@@ -564,5 +564,20 @@
   },
   "Reject": {
     "One": "Rechazar"
+  },
+  "EmailCode": {
+    "One": "Código de correo"
+  },
+  "SendCode": {
+    "One": "Enviar código"
+  },
+  "ResendCodeIn": {
+    "One": "Reenviar en {seconds}s"
+  },
+  "CodeSent": {
+    "One": "Código enviado, revisa tu correo"
+  },
+  "EmailInvalid": {
+    "One": "Dirección de correo inválida"
   }
 }

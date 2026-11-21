@@ -550,5 +550,20 @@
   },
   "Reject": {
     "One": "거부"
+  },
+  "EmailCode": {
+    "One": "이메일 인증번호"
+  },
+  "SendCode": {
+    "One": "인증번호 받기"
+  },
+  "ResendCodeIn": {
+    "One": "{seconds}초 후 재전송"
+  },
+  "CodeSent": {
+    "One": "인증번호를 보냈습니다. 메일함을 확인하세요"
+  },
+  "EmailInvalid": {
+    "One": "이메일 형식이 올바르지 않습니다"
   }
 }

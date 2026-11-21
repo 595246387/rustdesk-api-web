@@ -97,3 +97,11 @@ export function register (data) {
     data,
   })
 }
+
+export function sendRegisterCode (data) {
+  return request({
+    url: '/user/register-code',
+    method: 'post',
+    data,
+  })
+}

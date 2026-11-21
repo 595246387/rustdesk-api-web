@@ -12,6 +12,15 @@
           <el-input v-model="form.email" class="login-input"></el-input>
         </el-form-item>
 
+        <el-form-item v-if="emailVerify" :label="T('EmailCode')" prop="code">
+          <div class="code-row">
+            <el-input v-model="form.code" class="login-input" maxlength="6"></el-input>
+            <el-button :loading="sending" :disabled="countdown > 0" @click="sendCode">
+              {{ countdown > 0 ? T('ResendCodeIn', { seconds: countdown }) : T('SendCode') }}
+            </el-button>
+          </div>
+        </el-form-item>
+
         <el-form-item :label="T('Password')" prop="password">
           <el-input v-model="form.password" type="password" show-password
                     class="login-input"></el-input>
@@ -30,11 +39,12 @@
 </template>
 
 <script setup>
-  import { reactive, ref } from 'vue'
+  import { onMounted, onUnmounted, reactive, ref } from 'vue'
   import { ElMessage } from 'element-plus'
   import { T } from '@/utils/i18n'
-  import { useRoute, useRouter } from 'vue-router'
-  import { register } from '@/api/user'
+  import { useRouter } from 'vue-router'
+  import { register, sendRegisterCode } from '@/api/user'
+  import { loginOptions } from '@/api/login'
   import { useUserStore } from '@/store/user'
   import { useAppStore } from '@/store/app'
 
@@ -43,16 +53,46 @@
   const form = reactive({
     username: '',
     email: '',
+    code: '',
     password: '',
     confirm_password: '',
   })
+  // emailVerify 由后端 register-email-verify 决定是否显示验证码输入框
+  const emailVerify = ref(false)
+  const sending = ref(false)
+  const countdown = ref(0)
+  let countdownTimer = null
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   const rules = {
     username: [
       { required: true, message: T('ParamRequired', { param: T('Username') }), trigger: 'blur' },
     ],
-    // email: [
-    //   { required: true, message: T('ParamRequired', { param: T('Email') }), trigger: 'blur' },
-    // ],
+    email: [
+      {
+        validator: (rule, value, callback) => {
+          const v = (value || '').trim()
+          if (!v) {
+            return emailVerify.value
+              ? callback(new Error(T('ParamRequired', { param: T('Email') })))
+              : callback()
+          }
+          if (!emailPattern.test(v)) {
+            return callback(new Error(T('EmailInvalid')))
+          }
+          callback()
+        }, trigger: 'blur',
+      },
+    ],
+    code: [
+      {
+        validator: (rule, value, callback) => {
+          if (emailVerify.value && !(value || '').trim()) {
+            return callback(new Error(T('ParamRequired', { param: T('EmailCode') })))
+          }
+          callback()
+        }, trigger: 'blur',
+      },
+    ],
     password: [
       { required: true, message: T('ParamRequired', { param: T('Password') }), trigger: 'blur' },
     ],
@@ -70,12 +110,55 @@
     ],
   }
   const f = ref(null)
+
+  onMounted(async () => {
+    const res = await loginOptions().catch(_ => false)
+    if (res?.data) {
+      emailVerify.value = !!res.data.register_email_verify
+    }
+  })
+  onUnmounted(() => {
+    if (countdownTimer) {
+      clearInterval(countdownTimer)
+    }
+  })
+
+  const startCountdown = (seconds) => {
+    countdown.value = seconds
+    if (countdownTimer) {
+      clearInterval(countdownTimer)
+    }
+    countdownTimer = setInterval(() => {
+      countdown.value--
+      if (countdown.value <= 0) {
+        clearInterval(countdownTimer)
+        countdownTimer = null
+      }
+    }, 1000)
+  }
+
+  const sendCode = async () => {
+    const ok = await f.value.validateField('email').then(() => true).catch(_ => false)
+    if (!ok) {
+      return
+    }
+    sending.value = true
+    const res = await sendRegisterCode({ email: form.email.trim() }).catch(_ => false)
+    sending.value = false
+    if (!res) {
+      return
+    }
+    ElMessage.success(T('CodeSent'))
+    startCountdown(res.data?.resend_after || 60)
+  }
+
   const submit = async () => {
     const v = await f.value.validate().catch(_ => false)
     if (!v) {
       return
     }
-    const res = await register(form).catch(_ => false)
+    const payload = { ...form, email: form.email.trim(), code: form.code.trim() }
+    const res = await register(payload).catch(_ => false)
     if (!res) {
       return
     }
@@ -150,6 +233,13 @@ h1 {
   font-size: 12px;
   line-height: 1.5;
   margin-bottom: 12px;
+}
+
+.code-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
 }
 
 .el-form-item {

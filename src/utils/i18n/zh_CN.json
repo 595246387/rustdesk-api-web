@@ -580,5 +580,20 @@
   },
   "Reject": {
     "One": "拒绝"
+  },
+  "EmailCode": {
+    "One": "邮箱验证码"
+  },
+  "SendCode": {
+    "One": "获取验证码"
+  },
+  "ResendCodeIn": {
+    "One": "{seconds}s 后重发"
+  },
+  "CodeSent": {
+    "One": "验证码已发送，请查收邮箱"
+  },
+  "EmailInvalid": {
+    "One": "邮箱格式不正确"
   }
 }

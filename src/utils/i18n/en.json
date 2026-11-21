@@ -564,5 +564,20 @@
   },
   "Reject": {
     "One": "Reject"
+  },
+  "EmailCode": {
+    "One": "Email code"
+  },
+  "SendCode": {
+    "One": "Send code"
+  },
+  "ResendCodeIn": {
+    "One": "Resend in {seconds}s"
+  },
+  "CodeSent": {
+    "One": "Verification code sent, please check your inbox"
+  },
+  "EmailInvalid": {
+    "One": "Invalid email address"
   }
 }
