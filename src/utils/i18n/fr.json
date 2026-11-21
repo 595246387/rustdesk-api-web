@@ -541,6 +541,15 @@
   "DeviceLimitTip": {
     "One": "0 = aucun appareil attribué (nouveaux appareils bloqués), -1 = illimité, positif = nombre max"
   },
+  "AccountExpireAt": {
+    "One": "Expiration du compte"
+  },
+  "AccountExpireAtTip": {
+    "One": "Laissez vide pour aucune expiration. Une fois expiré, le compte ne peut plus se connecter au panneau d'administration ni au client, et les sessions existantes sont refusées."
+  },
+  "Expired": {
+    "One": "Expiré"
+  },
   "FollowGlobal": {
     "One": "Suivre le global"
   },

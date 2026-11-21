@@ -46,6 +46,14 @@
             <span v-else>{{ row.device_limit }}</span>
           </template>
         </el-table-column>
+        <el-table-column :label="T('AccountExpireAt')" align="center" width="180">
+          <template #default="{row}">
+            <span v-if="!row.expire_at">{{ T('Forever') }}</span>
+            <el-tag v-else :type="isExpired(row) ? 'danger' : 'success'" size="small">
+              {{ formatExpire(row.expire_at) }}
+            </el-tag>
+          </template>
+        </el-table-column>
         <el-table-column prop="created_at" :label="T('CreatedAt')" align="center"/>
         <el-table-column prop="updated_at" :label="T('UpdatedAt')" align="center"/>
         <el-table-column :label="T('Actions')" align="center" width="650">
@@ -107,6 +115,10 @@
       getList(listQuery)
     }
   }
+
+  // 到期时间展示
+  const isExpired = (row) => row.expire_at > 0 && row.expire_at * 1000 <= Date.now()
+  const formatExpire = (ts) => new Date(ts * 1000).toLocaleString()
 
   const changeStatus = async (row) => {
     /*const confirm = await ElMessageBox.confirm(T('Confirm?', { param: T('Update') }), {

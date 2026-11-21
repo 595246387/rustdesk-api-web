@@ -554,6 +554,15 @@
   "DeviceLimitTip": {
     "One": "0 暂未分配设备（禁止新设备登录），-1 不限制，正数为最大设备数"
   },
+  "AccountExpireAt": {
+    "One": "账号有效期"
+  },
+  "AccountExpireAtTip": {
+    "One": "留空表示永久有效；到期后该账号无法登录后台和客户端，已登录会话也会被拒绝。"
+  },
+  "Expired": {
+    "One": "已过期"
+  },
   "FollowGlobal": {
     "One": "跟随全局"
   },

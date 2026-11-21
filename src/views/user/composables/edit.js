@@ -7,7 +7,7 @@ import { T } from '@/utils/i18n'
 
 export function useGetDetail (id) {
   let item = ref({})  //保留原始值
-  let form = ref({ device_limit: 0 })
+  let form = ref({ device_limit: 0, expire_at: 0 })
   const groupsList = ref([])
   const getDetail = async (id) => {
     const res = await detail(id)
@@ -17,6 +17,8 @@ export function useGetDetail (id) {
     if (form.value.device_limit === null || form.value.device_limit === undefined) {
       form.value.device_limit = 0
     }
+    // 0 / 空 表示永久有效
+    form.value.expire_at = form.value.expire_at || 0
   }
   if (id > 0) {
     onMounted(_ => {getDetail(id)})

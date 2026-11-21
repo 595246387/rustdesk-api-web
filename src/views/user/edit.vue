@@ -40,6 +40,15 @@
         <el-input-number v-model="form.device_limit" :min="-1" :step="1" step-strictly></el-input-number>
         <div class="form-tip">{{ T('DeviceLimitTip') }}</div>
       </el-form-item>
+      <el-form-item :label="T('AccountExpireAt')" prop="expire_at">
+        <el-date-picker
+            v-model="expireAtDate"
+            type="datetime"
+            :placeholder="T('Forever')"
+            clearable
+        ></el-date-picker>
+        <div class="form-tip">{{ T('AccountExpireAtTip') }}</div>
+      </el-form-item>
       <el-form-item>
         <el-button @click="cancel">{{ T('Cancel') }}</el-button>
         <el-button @click="submit" type="primary">{{ T('Submit') }}</el-button>
@@ -50,12 +59,21 @@
 
 <script setup>
   import { useRoute } from 'vue-router'
+  import { computed } from 'vue'
   import { useGetDetail, useSubmit } from '@/views/user/composables/edit'
   import { ENABLE_STATUS, DISABLE_STATUS, PENDING_STATUS } from '@/utils/common_options'
   import { T } from '@/utils/i18n'
 
   const route = useRoute()
   const { form, item, getDetail, groupsList } = useGetDetail(route.params.id)
+
+  // 后端存 Unix 秒，0 表示永久；日期选择器用 Date 对象。
+  const expireAtDate = computed({
+    get: () => form.value.expire_at ? new Date(form.value.expire_at * 1000) : null,
+    set: (v) => {
+      form.value.expire_at = v ? Math.floor(new Date(v).getTime() / 1000) : 0
+    },
+  })
 
   const { root, rules, validate, submit, cancel } = useSubmit(form, route.params.id)
 

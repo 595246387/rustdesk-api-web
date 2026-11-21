@@ -538,6 +538,15 @@
   "DeviceLimitTip": {
     "One": "0 = sin dispositivos asignados (se bloquean los nuevos), -1 = ilimitado, positivo = máximo"
   },
+  "AccountExpireAt": {
+    "One": "Caducidad de la cuenta"
+  },
+  "AccountExpireAtTip": {
+    "One": "Déjelo vacío para que no caduque. Al caducar, la cuenta no podrá iniciar sesión en el panel ni en el cliente, y las sesiones existentes serán rechazadas."
+  },
+  "Expired": {
+    "One": "Caducada"
+  },
   "FollowGlobal": {
     "One": "Seguir global"
   },

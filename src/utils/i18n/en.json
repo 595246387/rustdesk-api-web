@@ -538,6 +538,15 @@
   "DeviceLimitTip": {
     "One": "0 = no devices assigned (new devices blocked), -1 = unlimited, positive = max devices"
   },
+  "AccountExpireAt": {
+    "One": "Account expires at"
+  },
+  "AccountExpireAtTip": {
+    "One": "Leave empty for no expiry. Once expired, the account cannot sign in to the admin panel or client, and existing sessions are rejected."
+  },
+  "Expired": {
+    "One": "Expired"
+  },
   "FollowGlobal": {
     "One": "Follow global"
   },

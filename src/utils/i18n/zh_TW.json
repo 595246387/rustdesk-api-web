@@ -554,6 +554,15 @@
   "DeviceLimitTip": {
     "One": "0 尚未分配裝置（禁止新裝置登入），-1 不限制，正數為最大裝置數"
   },
+  "AccountExpireAt": {
+    "One": "帳號有效期"
+  },
+  "AccountExpireAtTip": {
+    "One": "留空表示永久有效；到期後該帳號無法登入後台和用戶端，已登入工作階段也會被拒絕。"
+  },
+  "Expired": {
+    "One": "已過期"
+  },
   "FollowGlobal": {
     "One": "跟隨全域"
   },
