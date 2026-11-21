@@ -26,7 +26,12 @@
         </el-table-column>
         <el-table-column :label="T('Status')" align="center">
           <template #default="{row}">
-            <el-switch v-model="row.status"
+            <template v-if="row.status === PENDING_STATUS">
+              <el-tag type="warning" size="small">{{ T('PendingReview') }}</el-tag>
+              <el-button link type="success" @click="approve(row)">{{ T('Approve') }}</el-button>
+              <el-button link type="danger" @click="reject(row)">{{ T('Reject') }}</el-button>
+            </template>
+            <el-switch v-else v-model="row.status"
                        :active-value="ENABLE_STATUS"
                        :inactive-value="DISABLE_STATUS"
                        @change="changeStatus(row)"
@@ -69,7 +74,7 @@
 <script setup>
   import { useRepositories, useDel, useToEditOrAdd, useChangePwd } from '@/views/user/composables'
   import { T } from '@/utils/i18n'
-  import { DISABLE_STATUS, ENABLE_STATUS } from '@/utils/common_options'
+  import { DISABLE_STATUS, ENABLE_STATUS, PENDING_STATUS } from '@/utils/common_options'
   import { update } from '@/api/user'
   import { ElMessageBox, ElMessage } from 'element-plus'
   import { onMounted, watch } from 'vue'
@@ -117,6 +122,17 @@
       getList(listQuery)
     }
   }
+
+  // 审核通过 / 拒绝自助注册的账号
+  const review = async (row, status) => {
+    const res = await update({ ...row, status }).catch(_ => false)
+    if (res) {
+      ElMessage.success(T('OperationSuccess'))
+      getList(listQuery)
+    }
+  }
+  const approve = (row) => review(row, ENABLE_STATUS)
+  const reject = (row) => review(row, DISABLE_STATUS)
 
 </script>
 

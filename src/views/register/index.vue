@@ -2,6 +2,7 @@
   <div class="login-container">
     <div class="login-card">
       <img src="@/assets/logo.png" alt="logo" class="login-logo"/>
+      <div class="register-tip">{{ T('RegisterNeedAdminConfirmTip') }}</div>
       <el-form ref="f" :model="form" label-position="top" class="login-form" :rules="rules">
         <el-form-item :label="T('Username')" prop="username">
           <el-input v-model="form.username" class="login-input"></el-input>
@@ -78,9 +79,15 @@
     if (!res) {
       return
     }
+    if (res.data?.pending) {
+      // 需要管理员审核：不自动登录，提示后去登录页。
+      ElMessage.success(T('RegisterSuccessWaitAdminConfirm'))
+      router.push('/login')
+      return
+    }
     userStore.saveUserData(res.data)
     useAppStore().loadConfig()
-    ElMessage.success('Submit')
+    ElMessage.success(T('RegisterSuccess'))
     router.push('/')
   }
   const toLogin = () => {
@@ -136,6 +143,13 @@ h1 {
   height: 80px;
   margin: 0 auto 20px;
   display: block;
+}
+
+.register-tip {
+  color: #e6a23c;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
 
 .el-form-item {

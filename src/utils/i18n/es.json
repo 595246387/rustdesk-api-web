@@ -543,5 +543,26 @@
   },
   "Unlimited": {
     "One": "Ilimitado"
+  },
+  "RegisterSuccess": {
+    "One": "Registro exitoso"
+  },
+  "RegisterSuccessWaitAdminConfirm": {
+    "One": "Registro exitoso. Espera la aprobación del administrador."
+  },
+  "RegisterNeedAdminConfirmTip": {
+    "One": "Las cuentas nuevas deben ser aprobadas por un administrador antes de poder iniciar sesión."
+  },
+  "PendingReview": {
+    "One": "Pendiente de aprobación"
+  },
+  "PendingReviewTip": {
+    "One": "Esta cuenta se registró por sí misma. Activa el interruptor (o pulsa Aprobar) para aprobarla."
+  },
+  "Approve": {
+    "One": "Aprobar"
+  },
+  "Reject": {
+    "One": "Rechazar"
   }
 }

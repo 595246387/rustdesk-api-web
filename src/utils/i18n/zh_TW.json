@@ -559,5 +559,26 @@
   },
   "Unlimited": {
     "One": "不限"
+  },
+  "RegisterSuccess": {
+    "One": "註冊成功"
+  },
+  "RegisterSuccessWaitAdminConfirm": {
+    "One": "註冊成功，請等待管理員審核。"
+  },
+  "RegisterNeedAdminConfirmTip": {
+    "One": "註冊後需管理員審核通過才能登入。"
+  },
+  "PendingReview": {
+    "One": "待審核"
+  },
+  "PendingReviewTip": {
+    "One": "該帳號為自助註冊，打開開關或點擊「通過」即可審核。"
+  },
+  "Approve": {
+    "One": "通過"
+  },
+  "Reject": {
+    "One": "拒絕"
   }
 }

@@ -31,6 +31,7 @@
                    :active-value="ENABLE_STATUS"
                    :inactive-value="DISABLE_STATUS"
         ></el-switch>
+        <div v-if="form.status === PENDING_STATUS" class="form-tip">{{ T('PendingReviewTip') }}</div>
       </el-form-item>
       <el-form-item :label="T('Remark')" prop="remark">
           <el-input v-model="form.remark"></el-input>
@@ -50,7 +51,7 @@
 <script setup>
   import { useRoute } from 'vue-router'
   import { useGetDetail, useSubmit } from '@/views/user/composables/edit'
-  import { ENABLE_STATUS, DISABLE_STATUS } from '@/utils/common_options'
+  import { ENABLE_STATUS, DISABLE_STATUS, PENDING_STATUS } from '@/utils/common_options'
   import { T } from '@/utils/i18n'
 
   const route = useRoute()

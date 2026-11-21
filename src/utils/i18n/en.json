@@ -543,5 +543,26 @@
   },
   "Unlimited": {
     "One": "Unlimited"
+  },
+  "RegisterSuccess": {
+    "One": "Registration successful"
+  },
+  "RegisterSuccessWaitAdminConfirm": {
+    "One": "Registration successful. Please wait for administrator approval."
+  },
+  "RegisterNeedAdminConfirmTip": {
+    "One": "New accounts must be approved by an administrator before login."
+  },
+  "PendingReview": {
+    "One": "Pending review"
+  },
+  "PendingReviewTip": {
+    "One": "This account signed up by itself. Turn the switch on (or click Approve) to approve it."
+  },
+  "Approve": {
+    "One": "Approve"
+  },
+  "Reject": {
+    "One": "Reject"
   }
 }

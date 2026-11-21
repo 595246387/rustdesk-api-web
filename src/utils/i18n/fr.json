@@ -546,5 +546,26 @@
   },
   "Unlimited": {
     "One": "Illimité"
+  },
+  "RegisterSuccess": {
+    "One": "Inscription réussie"
+  },
+  "RegisterSuccessWaitAdminConfirm": {
+    "One": "Inscription réussie. Veuillez attendre la validation de l'administrateur."
+  },
+  "RegisterNeedAdminConfirmTip": {
+    "One": "Les nouveaux comptes doivent être approuvés par un administrateur avant de pouvoir se connecter."
+  },
+  "PendingReview": {
+    "One": "En attente de validation"
+  },
+  "PendingReviewTip": {
+    "One": "Ce compte s'est inscrit lui-même. Activez l'interrupteur (ou cliquez sur Approuver) pour le valider."
+  },
+  "Approve": {
+    "One": "Approuver"
+  },
+  "Reject": {
+    "One": "Refuser"
   }
 }
